@@ -31,7 +31,7 @@
 
     onMount(async () => {
         try {
-            userData = await wretch("/api/user/show").get().json<User[]>();
+            userData = await wretch("https://seminarbackend.vercel.app/user/show").get().json<User[]>();
             console.log(userData);
         } catch (error) {
             console.error("Error fetching user data:", error);
@@ -46,7 +46,7 @@
     let newfname: string;
     let newlname: string;
     const click = async () => {
-        const res = wretch("/api/user/reg")
+        const res = wretch("https://seminarbackend.vercel.app/user/reg")
             .post({
                 fname: fname,
                 lname: lname,
@@ -60,7 +60,7 @@
 
     const edit = async () => {
         const id = document.getElementById("id_user") as HTMLInputElement;
-        wretch("/api/user/edit")
+        wretch("https://seminarbackend.vercel.app/user/edit")
             .put({
                 id: id.value,
                 newfname: newfname,
@@ -75,7 +75,7 @@
 
     const deleteuser = async () => {
         const id = (document.getElementById("id_user") as HTMLInputElement).value;
-        await wretch(`/api/user/delete/${id}`)
+        await wretch(`https://seminarbackend.vercel.app/user/delete/${id}`)
         .delete()
         .res(async()=>{
             toast.success("Deleted")
