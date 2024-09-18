@@ -130,14 +130,14 @@
                 </div>
             {:else}
                 <!-- Show user data once loaded -->
-                <ScrollArea class="flex w-full max-lg:h-[500px]">
-                    <div class="grid grid-cols-4 p-4">
+                <ScrollArea class="flex w-full">
+                    <div class="grid grid-cols-4 p-4 gap-5">
                         <strong>Firstname</strong>
                         <strong>Lastname</strong>
                     </div>
                     {#each userData as user (user.id)}
                         <div
-                            class="grid grid-cols-4 gap-4 p-4 justify-between items-center"
+                            class="grid grid-cols-4 gap-4 p-4 justify-between items-center max-lg:text-[16px]"
                         >
                             <p>{user.fname}</p>
                             <p>{user.lname}</p>
@@ -275,14 +275,14 @@
             {/if}
         </div>
     </div>
-</div>
-<div class="flex w-full h-[50px] bg-[#2f2f2f] justify-center ">
-    <div class="flex items-center p-3">
-        <p class="text-white">
-            © 2024 | Made with ❤️ by <a href="https://github.com/tony007x"
-                >Tony219</a
-            >y
-        </p>
-    </div>
+    <footer class="flex w-full h-[50px] bg-[#2f2f2f] justify-center ">
+        <div class="flex items-center p-3">
+            <p class="text-white">
+                © 2024 | Made with ❤️ by <a href="https://github.com/tony007x"
+                    >Tony219</a
+                >y
+            </p>
+        </div>
+    </footer>
 </div>
 
