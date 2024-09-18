@@ -94,33 +94,34 @@
     }
 </script>
 
-<div class="flex  w-full h-screen justify-between ">
+<div class="flex flex-col w-full h-screen justify-between">
     <div class="flex w-full max-lg:flex-col">
-    <!-- LEFT -->
-    <div class="flex w-full justify-center p-5 items-center">
-        <div
-            class="flex flex-col w-[300px] shadow-lg shadow-slate-400 rounded-lg p-4 gap-3"
-        >
-            <label for="Fname">First name</label>
-            <input
-                id="Fname"
-                type="text"
-                bind:value={fname}
-                class="border pl-2"
-            />
-            <label for="Lname">Last name</label>
-            <input
-                id="Lname"
-                type="text"
-                bind:value={lname}
-                class="border pl-2"
-            />
-            <button type="submit" class="border" on:click={click}>Submit</button
+        <!-- LEFT -->
+        <div class="flex w-full justify-center p-5 items-center">
+            <div
+                class="flex flex-col w-[300px] shadow-lg shadow-slate-400 rounded-lg p-4 gap-3"
             >
+                <label for="Fname">First name</label>
+                <input
+                    id="Fname"
+                    type="text"
+                    bind:value={fname}
+                    class="border pl-2"
+                />
+                <label for="Lname">Last name</label>
+                <input
+                    id="Lname"
+                    type="text"
+                    bind:value={lname}
+                    class="border pl-2"
+                />
+                <button type="submit" class="border" on:click={click}
+                    >Submit</button
+                >
+            </div>
         </div>
-    </div>
 
-    <!-- RIGHT -->
+        <!-- RIGHT -->
         <div class="flex w-full 5 p-5">
             <div class="flex flex-col w-full">
                 <strong class="text-center m-4">User List</strong>
@@ -284,12 +285,12 @@
                 {/if}
             </div>
         </div>
-        <footer class="bg-[#2f2f2f] text-white py-3 text-center">
-            <p>
-              © 2024 | Made with ❤️ by <a href="https://github.com/tony007x">Tony219</a>
-            </p>
-          </footer>
     </div>
-
+    <footer class="bg-[#2f2f2f] text-white py-3 text-center">
+        <p>
+            © 2024 | Made with ❤️ by <a href="https://github.com/tony007x"
+                >Tony219</a
+            >
+        </p>
+    </footer>
 </div>
-
