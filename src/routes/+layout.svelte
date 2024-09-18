@@ -5,4 +5,3 @@
   <Toaster></Toaster>
 
   <slot />
-  

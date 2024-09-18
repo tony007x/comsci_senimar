@@ -131,7 +131,7 @@
                     </div>
                 {:else}
                     <!-- Show user data once loaded -->
-                    <ScrollArea class="flex w-full">
+                    <ScrollArea class="flex w-full h-screen">
                         <div class="grid grid-cols-4 p-4 gap-5">
                             <strong>Firstname</strong>
                             <strong>Lastname</strong>
@@ -284,15 +284,12 @@
                 {/if}
             </div>
         </div>
+        <footer class="bg-[#2f2f2f] text-white py-3 text-center">
+            <p>
+              © 2024 | Made with ❤️ by <a href="https://github.com/tony007x">Tony219</a>
+            </p>
+          </footer>
     </div>
 
 </div>
-<footer class="flex w-full h-[50px] bg-[#2f2f2f] justify-center max-lg:mt-32">
-    <div class="flex items-center p-3">
-        <p class="text-white">
-            © 2024 | Made with ❤️ by <a href="https://github.com/tony007x"
-                >Tony219</a
-            >y
-        </p>
-    </div>
-</footer>
+
