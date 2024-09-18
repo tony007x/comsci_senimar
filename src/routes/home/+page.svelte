@@ -31,7 +31,11 @@
 
     onMount(async () => {
         try {
-            userData = await wretch("https://seminarbackend.vercel.app/user/show").get().json<User[]>();
+            userData = await wretch(
+                "https://seminarbackend.vercel.app/user/show",
+            )
+                .get()
+                .json<User[]>();
             console.log(userData);
         } catch (error) {
             console.error("Error fetching user data:", error);
@@ -74,14 +78,15 @@
     };
 
     const deleteuser = async () => {
-        const id = (document.getElementById("id_user") as HTMLInputElement).value;
+        const id = (document.getElementById("id_user") as HTMLInputElement)
+            .value;
         await wretch(`https://seminarbackend.vercel.app/user/delete/${id}`)
-        .delete()
-        .res(async()=>{
-            toast.success("Deleted")
-            await sleep(3000)
-            window.location.reload()
-        })
+            .delete()
+            .res(async () => {
+                toast.success("Deleted");
+                await sleep(3000);
+                window.location.reload();
+            });
     };
 
     function sleep(ms: number): Promise<void> {
@@ -89,11 +94,9 @@
     }
 </script>
 
-<div class="flex w-full h-screen justify-between p-5">
+<div class="flex w-full h-screen justify-between max-lg:flex-col">
     <!-- LEFT -->
-    <div
-        class="flex w-full m-5 justify-center items-center"
-    >
+    <div class="flex w-full justify-center p-5 items-center">
         <div
             class="flex flex-col w-[300px] shadow-lg shadow-slate-400 rounded-lg p-4 gap-3"
         >
@@ -117,7 +120,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div class="flex w-full m-5 p-3">
+    <div class="flex w-full 5 p-5">
         <div class="flex flex-col w-full">
             <strong class="text-center m-4">User List</strong>
 
@@ -127,7 +130,7 @@
                 </div>
             {:else}
                 <!-- Show user data once loaded -->
-                <ScrollArea class="flex w-full">
+                <ScrollArea class="flex w-full max-lg:h-[500px]">
                     <div class="grid grid-cols-4 p-4">
                         <strong>Firstname</strong>
                         <strong>Lastname</strong>
@@ -213,8 +216,9 @@
                                             <div
                                                 class="grid grid-cols-4 items-center gap-4"
                                             >
-                                                <Label for="id" class="text-right"
-                                                    >ID</Label
+                                                <Label
+                                                    for="id"
+                                                    class="text-right">ID</Label
                                                 >
                                                 <Input
                                                     id="id_user"
@@ -226,7 +230,9 @@
                                             <div
                                                 class="grid grid-cols-4 items-center gap-4"
                                             >
-                                                <Label for="name" class="text-right"
+                                                <Label
+                                                    for="name"
+                                                    class="text-right"
                                                     >Name</Label
                                                 >
                                                 <Input
@@ -254,7 +260,9 @@
                                         </div>
                                     </Dialog.Header>
                                     <div class="flex justify-center gap-4 py-4">
-                                        <Button on:click={deleteuser}>Delete</Button>
+                                        <Button on:click={deleteuser}
+                                            >Delete</Button
+                                        >
                                         <Button on:click={() => {}}
                                             >Cancel</Button
                                         >
@@ -268,3 +276,13 @@
         </div>
     </div>
 </div>
+<div class="flex w-full h-[50px] bg-[#2f2f2f] justify-center ">
+    <div class="flex items-center p-3">
+        <p class="text-white">
+            © 2024 | Made with ❤️ by <a href="https://github.com/tony007x"
+                >Tony219</a
+            >y
+        </p>
+    </div>
+</div>
+
