@@ -94,7 +94,8 @@
     }
 </script>
 
-<div class="flex w-full h-screen justify-between max-lg:flex-col">
+<div class="flex  w-full h-screen justify-between ">
+    <div class="flex w-full max-lg:flex-col">
     <!-- LEFT -->
     <div class="flex w-full justify-center p-5 items-center">
         <div
@@ -120,98 +121,37 @@
     </div>
 
     <!-- RIGHT -->
-    <div class="flex w-full 5 p-5">
-        <div class="flex flex-col w-full">
-            <strong class="text-center m-4">User List</strong>
+        <div class="flex w-full 5 p-5">
+            <div class="flex flex-col w-full">
+                <strong class="text-center m-4">User List</strong>
 
-            {#if isLoading}
-                <div class="flex w-full h-full justify-center items-center">
-                    <p class="animate-pulse">Loading...</p>
-                </div>
-            {:else}
-                <!-- Show user data once loaded -->
-                <ScrollArea class="flex w-full">
-                    <div class="grid grid-cols-4 p-4 gap-5">
-                        <strong>Firstname</strong>
-                        <strong>Lastname</strong>
+                {#if isLoading}
+                    <div class="flex w-full h-full justify-center items-center">
+                        <p class="animate-pulse">Loading...</p>
                     </div>
-                    {#each userData as user (user.id)}
-                        <div
-                            class="grid grid-cols-4 gap-4 p-4 justify-between items-center max-lg:text-[16px]"
-                        >
-                            <p>{user.fname}</p>
-                            <p>{user.lname}</p>
-                            <Dialog.Root>
-                                <Dialog.Trigger
-                                    class={buttonVariants({
-                                        variant: "outline",
-                                    })}>Edit</Dialog.Trigger
-                                >
-                                <Dialog.Content class="sm:max-w-[425px]">
-                                    <Dialog.Header>
-                                        <Dialog.Title>Edit</Dialog.Title>
-                                    </Dialog.Header>
-                                    <div class="grid gap-4 py-4">
-                                        <div
-                                            class="grid grid-cols-4 items-center gap-4"
-                                        >
-                                            <Label for="id" class="text-right"
-                                                >ID</Label
-                                            >
-                                            <Input
-                                                id="id_user"
-                                                value={user.id}
-                                                disabled
-                                                class="col-span-3"
-                                            />
-                                        </div>
-                                        <div
-                                            class="grid grid-cols-4 items-center gap-4"
-                                        >
-                                            <Label for="name" class="text-right"
-                                                >Name</Label
-                                            >
-                                            <Input
-                                                id="name"
-                                                placeholder={user.fname}
-                                                bind:value={newfname}
-                                                class="col-span-3"
-                                            />
-                                        </div>
-                                        <div
-                                            class="grid grid-cols-4 items-center gap-4"
-                                        >
-                                            <Label
-                                                for="lname"
-                                                class="text-right"
-                                                >Lastname</Label
-                                            >
-                                            <Input
-                                                id="lname"
-                                                placeholder={user.lname}
-                                                bind:value={newlname}
-                                                class="col-span-3"
-                                            />
-                                        </div>
-                                    </div>
-                                    <Dialog.Footer>
-                                        <Button type="submit" on:click={edit}
-                                            >Save changes</Button
-                                        >
-                                    </Dialog.Footer>
-                                </Dialog.Content>
-                            </Dialog.Root>
-
-                            <!-- DELETE -->
-                            <Dialog.Root>
-                                <Dialog.Trigger
-                                    class={buttonVariants({
-                                        variant: "outline",
-                                    })}><Trash2 /></Dialog.Trigger
-                                >
-                                <Dialog.Content class="sm:max-w-[425px]">
-                                    <Dialog.Header>
-                                        <Dialog.Title>Delete</Dialog.Title>
+                {:else}
+                    <!-- Show user data once loaded -->
+                    <ScrollArea class="flex w-full">
+                        <div class="grid grid-cols-4 p-4 gap-5">
+                            <strong>Firstname</strong>
+                            <strong>Lastname</strong>
+                        </div>
+                        {#each userData as user (user.id)}
+                            <div
+                                class="grid grid-cols-4 gap-4 p-4 justify-between items-center max-lg:text-[16px]"
+                            >
+                                <p>{user.fname}</p>
+                                <p>{user.lname}</p>
+                                <Dialog.Root>
+                                    <Dialog.Trigger
+                                        class={buttonVariants({
+                                            variant: "outline",
+                                        })}>Edit</Dialog.Trigger
+                                    >
+                                    <Dialog.Content class="sm:max-w-[425px]">
+                                        <Dialog.Header>
+                                            <Dialog.Title>Edit</Dialog.Title>
+                                        </Dialog.Header>
                                         <div class="grid gap-4 py-4">
                                             <div
                                                 class="grid grid-cols-4 items-center gap-4"
@@ -237,8 +177,8 @@
                                                 >
                                                 <Input
                                                     id="name"
-                                                    value={user.fname}
-                                                    disabled
+                                                    placeholder={user.fname}
+                                                    bind:value={newfname}
                                                     class="col-span-3"
                                                 />
                                             </div>
@@ -252,37 +192,107 @@
                                                 >
                                                 <Input
                                                     id="lname"
-                                                    value={user.lname}
-                                                    disabled
+                                                    placeholder={user.lname}
+                                                    bind:value={newlname}
                                                     class="col-span-3"
                                                 />
                                             </div>
                                         </div>
-                                    </Dialog.Header>
-                                    <div class="flex justify-center gap-4 py-4">
-                                        <Button on:click={deleteuser}
-                                            >Delete</Button
+                                        <Dialog.Footer>
+                                            <Button
+                                                type="submit"
+                                                on:click={edit}
+                                                >Save changes</Button
+                                            >
+                                        </Dialog.Footer>
+                                    </Dialog.Content>
+                                </Dialog.Root>
+
+                                <!-- DELETE -->
+                                <Dialog.Root>
+                                    <Dialog.Trigger
+                                        class={buttonVariants({
+                                            variant: "outline",
+                                        })}><Trash2 /></Dialog.Trigger
+                                    >
+                                    <Dialog.Content class="sm:max-w-[425px]">
+                                        <Dialog.Header>
+                                            <Dialog.Title>Delete</Dialog.Title>
+                                            <div class="grid gap-4 py-4">
+                                                <div
+                                                    class="grid grid-cols-4 items-center gap-4"
+                                                >
+                                                    <Label
+                                                        for="id"
+                                                        class="text-right"
+                                                        >ID</Label
+                                                    >
+                                                    <Input
+                                                        id="id_user"
+                                                        value={user.id}
+                                                        disabled
+                                                        class="col-span-3"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="grid grid-cols-4 items-center gap-4"
+                                                >
+                                                    <Label
+                                                        for="name"
+                                                        class="text-right"
+                                                        >Name</Label
+                                                    >
+                                                    <Input
+                                                        id="name"
+                                                        value={user.fname}
+                                                        disabled
+                                                        class="col-span-3"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="grid grid-cols-4 items-center gap-4"
+                                                >
+                                                    <Label
+                                                        for="lname"
+                                                        class="text-right"
+                                                        >Lastname</Label
+                                                    >
+                                                    <Input
+                                                        id="lname"
+                                                        value={user.lname}
+                                                        disabled
+                                                        class="col-span-3"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </Dialog.Header>
+                                        <div
+                                            class="flex justify-center gap-4 py-4"
                                         >
-                                        <Button on:click={() => {}}
-                                            >Cancel</Button
-                                        >
-                                    </div>
-                                </Dialog.Content>
-                            </Dialog.Root>
-                        </div>
-                    {/each}
-                </ScrollArea>
-            {/if}
+                                            <Button on:click={deleteuser}
+                                                >Delete</Button
+                                            >
+                                            <Button on:click={() => {}}
+                                                >Cancel</Button
+                                            >
+                                        </div>
+                                    </Dialog.Content>
+                                </Dialog.Root>
+                            </div>
+                        {/each}
+                    </ScrollArea>
+                {/if}
+            </div>
         </div>
     </div>
-    <footer class="flex w-full h-[50px] bg-[#2f2f2f] justify-center ">
-        <div class="flex items-center p-3">
-            <p class="text-white">
-                © 2024 | Made with ❤️ by <a href="https://github.com/tony007x"
-                    >Tony219</a
-                >y
-            </p>
-        </div>
-    </footer>
-</div>
 
+</div>
+<footer class="flex w-full h-[50px] bg-[#2f2f2f] justify-center max-lg:mt-32">
+    <div class="flex items-center p-3">
+        <p class="text-white">
+            © 2024 | Made with ❤️ by <a href="https://github.com/tony007x"
+                >Tony219</a
+            >y
+        </p>
+    </div>
+</footer>
